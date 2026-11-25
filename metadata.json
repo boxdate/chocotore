@@ -1,0 +1,6 @@
+{
+  "name": "ChocoTore (ちょこトレ)",
+  "description": "A friendly, habit-forming workout app. Watch a short video, do a little training, and manage your streak locally with JSON files.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
