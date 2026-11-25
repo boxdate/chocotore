@@ -94,6 +94,7 @@ describe('storageService', () => {
 
   it('exports and imports a valid JSON training record file', () => {
     const day1 = new Date('2026-11-24T10:00:00.000Z');
+    updateCustomVideo(sampleVideo);
     recordWorkoutCompletion(sampleVideo, day1);
     const current = getTrainingData();
     const recordFile = buildTrainingRecordFile(current, day1);
