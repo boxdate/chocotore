@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#fffaf0" />
+      <stop offset="65%" stop-color="#fdf6e3" />
+      <stop offset="100%" stop-color="#f5e6d3" />
+    </radialGradient>
+    <linearGradient id="chocoBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6e3f20" />
+      <stop offset="100%" stop-color="#4d2d18" />
+    </linearGradient>
+    <linearGradient id="chocoPiece" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a1642b" />
+      <stop offset="100%" stop-color="#73431d" />
+    </linearGradient>
+    <linearGradient id="foilGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fcd34d" />
+      <stop offset="45%" stop-color="#fef3c7" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <linearGradient id="wrapperGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#b44309" />
+    </linearGradient>
+  </defs>
+
+  <!-- Opaque cream background (iOS apple-touch-icon & maskable safe) -->
+  <rect width="512" height="512" fill="url(#bgGrad)" />
+
+  <!-- Subtle decorative dots -->
+  <circle cx="96" cy="112" r="10" fill="#ebd4b3" opacity="0.6" />
+  <circle cx="424" cy="396" r="12" fill="#ebd4b3" opacity="0.6" />
+
+  <!-- Soft shadow beneath chocolate bar -->
+  <g transform="translate(264, 270) rotate(-8)">
+    <rect x="-106" y="-146" width="212" height="292" rx="26" fill="#4d2d18" opacity="0.14" />
+  </g>
+
+  <!-- Main Chocolate Bar Group (centered in safe zone) -->
+  <g transform="translate(256, 256) rotate(-8)">
+    <!-- Chocolate Base -->
+    <rect x="-104" y="-144" width="208" height="288" rx="24" fill="url(#chocoBody)" />
+
+    <!-- Subtle top highlight on bar -->
+    <rect x="-100" y="-140" width="200" height="280" rx="21" fill="none" stroke="#b47634" stroke-width="2.5" opacity="0.45" />
+
+    <!-- 2x3 Chocolate Squares -->
+    <!-- Row 1 Left -->
+    <rect x="-86" y="-126" width="78" height="68" rx="11" fill="#4d2d18" />
+    <rect x="-86" y="-126" width="74" height="64" rx="10" fill="url(#chocoPiece)" />
+    <rect x="-77" y="-117" width="56" height="46" rx="6" fill="#824d22" stroke="#cc9658" stroke-width="2" stroke-opacity="0.45" />
+    <path d="M-71,-110 L-49,-110" stroke="#ebd4b3" stroke-width="3.5" stroke-linecap="round" opacity="0.55" />
+
+    <!-- Row 1 Right -->
+    <rect x="10" y="-126" width="78" height="68" rx="11" fill="#4d2d18" />
+    <rect x="10" y="-126" width="74" height="64" rx="10" fill="url(#chocoPiece)" />
+    <rect x="19" y="-117" width="56" height="46" rx="6" fill="#824d22" stroke="#cc9658" stroke-width="2" stroke-opacity="0.45" />
+    <path d="M25,-110 L47,-110" stroke="#ebd4b3" stroke-width="3.5" stroke-linecap="round" opacity="0.55" />
+
+    <!-- Row 2 Left -->
+    <rect x="-86" y="-48" width="78" height="68" rx="11" fill="#4d2d18" />
+    <rect x="-86" y="-48" width="74" height="64" rx="10" fill="url(#chocoPiece)" />
+    <rect x="-77" y="-39" width="56" height="46" rx="6" fill="#824d22" stroke="#cc9658" stroke-width="2" stroke-opacity="0.45" />
+
+    <!-- Row 2 Right -->
+    <rect x="10" y="-48" width="78" height="68" rx="11" fill="#4d2d18" />
+    <rect x="10" y="-48" width="74" height="64" rx="10" fill="url(#chocoPiece)" />
+    <rect x="19" y="-39" width="56" height="46" rx="6" fill="#824d22" stroke="#cc9658" stroke-width="2" stroke-opacity="0.45" />
+
+    <!-- Row 3 Left (partially covered by wrapper) -->
+    <rect x="-86" y="30" width="78" height="68" rx="11" fill="#4d2d18" />
+    <rect x="-86" y="30" width="74" height="64" rx="10" fill="url(#chocoPiece)" />
+
+    <!-- Row 3 Right (partially covered by wrapper) -->
+    <rect x="10" y="30" width="78" height="68" rx="11" fill="#4d2d18" />
+    <rect x="10" y="30" width="74" height="64" rx="10" fill="url(#chocoPiece)" />
+
+    <!-- Gold Foil Peek -->
+    <path d="M-110,16 L110,-6 L110,140 Q110,152 98,152 L-98,152 Q-110,152 -110,140 Z" fill="url(#foilGrad)" />
+
+    <!-- Outer Wrapper with diagonal peel edge -->
+    <path d="M-112,38 L112,10 L112,138 Q112,154 96,154 L-96,154 Q-112,154 -112,138 Z" fill="url(#wrapperGrad)" />
+    <!-- Wrapper folded collar highlight -->
+    <path d="M-112,38 L112,10 L112,26 L-112,54 Z" fill="#fb923c" opacity="0.4" />
+    <!-- Wrapper cream stripe / label accent -->
+    <rect x="-64" y="76" width="128" height="36" rx="18" fill="#fdf6e3" opacity="0.95" />
+    <!-- Tiny dumbbell motif inside label -->
+    <rect x="-42" y="84" width="10" height="20" rx="4" fill="#ea580c" />
+    <rect x="-30" y="87" width="7" height="14" rx="3" fill="#ea580c" />
+    <rect x="-23" y="91" width="46" height="6" rx="3" fill="#ea580c" />
+    <rect x="23" y="87" width="7" height="14" rx="3" fill="#ea580c" />
+    <rect x="32" y="84" width="10" height="20" rx="4" fill="#ea580c" />
+  </g>
+
+  <!-- Sparkle accents -->
+  <path d="M396,104 L403,121 L420,128 L403,135 L396,152 L389,135 L372,128 L389,121 Z" fill="#f59e0b" />
+  <path d="M116,356 L121,368 L133,373 L121,378 L116,390 L111,378 L99,373 L111,368 Z" fill="#f59e0b" opacity="0.85" />
+</svg>

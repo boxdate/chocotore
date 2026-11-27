@@ -14,11 +14,14 @@ import {
 } from 'lucide-react';
 import { TrainingData } from '../types';
 import { formatJapaneseDateTime } from '../utils/dateUtils';
+import { PwaInstallState } from '../hooks/usePwaInstall';
+import { PwaInstallGuide } from './PwaInstallGuide';
 
 interface Props {
   isOpen: boolean;
   onClose: () => void;
   trainingData: TrainingData;
+  pwaInstall: PwaInstallState;
   onExportJson: () => string;
   onImportJson: (file: File) => Promise<TrainingData>;
   onResetData: () => void;
@@ -28,6 +31,7 @@ export const SettingsModal: React.FC<Props> = ({
   isOpen,
   onClose,
   trainingData,
+  pwaInstall,
   onExportJson,
   onImportJson,
   onResetData,
@@ -101,7 +105,7 @@ export const SettingsModal: React.FC<Props> = ({
   const recentLogs = trainingData.logs.slice(0, 7);
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 pt-[max(1rem,env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))] bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
       <div className="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden relative animate-in zoom-in-95 duration-200">
         {/* Header */}
         <div className="bg-choco-500 p-4 flex items-center justify-between text-white">
@@ -250,6 +254,11 @@ export const SettingsModal: React.FC<Props> = ({
               </div>
             </div>
           </div>
+
+          <div className="border-t border-choco-100"></div>
+
+          {/* PWA Install Section */}
+          <PwaInstallGuide pwaInstall={pwaInstall} variant="settings" />
 
           {/* Reset Section */}
           <div className="border-t border-choco-100 pt-4">

@@ -1,14 +1,19 @@
 import React, { useMemo, useState } from 'react';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, WifiOff } from 'lucide-react';
 import { TrainingVideo } from '../types';
 import { getYoutubeId } from '../utils/youtube';
 
 interface Props {
   video: TrainingVideo;
+  isOnline?: boolean;
   onComplete: () => void;
 }
 
-export const VideoPlayer: React.FC<Props> = ({ video, onComplete }) => {
+export const VideoPlayer: React.FC<Props> = ({
+  video,
+  isOnline = true,
+  onComplete,
+}) => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   const youtubeId = useMemo(
@@ -19,20 +24,36 @@ export const VideoPlayer: React.FC<Props> = ({ video, onComplete }) => {
   return (
     <div className="w-full flex flex-col items-center animate-in fade-in duration-500">
       <div className="w-full max-w-2xl bg-black rounded-2xl overflow-hidden shadow-2xl aspect-video relative">
-        {!isVideoLoaded && (
-          <div className="absolute inset-0 flex items-center justify-center text-white bg-choco-900/10 z-0">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+        {!isOnline ? (
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-choco-900 text-choco-100 z-20">
+            <WifiOff size={36} className="text-orange-400 mb-3" />
+            <p className="font-bold text-sm mb-1">
+              オフラインのため動画を読み込めません
+            </p>
+            <p className="text-xs text-choco-300 leading-relaxed">
+              インターネットに接続してから再生してください。
+              <br />
+              トレーニング済みの場合は下の「完了！」から記録できます。
+            </p>
           </div>
+        ) : (
+          <>
+            {!isVideoLoaded && (
+              <div className="absolute inset-0 flex items-center justify-center text-white bg-choco-900/10 z-0">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+              </div>
+            )}
+            <iframe
+              className="w-full h-full relative z-10"
+              src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&controls=1&rel=0&playsinline=1`}
+              title={video.title}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              onLoad={() => setIsVideoLoaded(true)}
+            ></iframe>
+          </>
         )}
-        <iframe
-          className="w-full h-full relative z-10"
-          src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&controls=1&rel=0&playsinline=1`}
-          title={video.title}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          onLoad={() => setIsVideoLoaded(true)}
-        ></iframe>
       </div>
 
       <div className="mt-6 flex flex-col items-center text-center">
