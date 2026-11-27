@@ -11,11 +11,15 @@ import {
 } from 'lucide-react';
 import { TrainingData, TrainingVideo } from '../types';
 import { StreakCounter } from '../components/StreakCounter';
+import { PwaInstallState } from '../hooks/usePwaInstall';
+import { PwaInstallGuide } from '../components/PwaInstallGuide';
 
 interface Props {
   trainingData: TrainingData;
   currentVideo: TrainingVideo | null;
   isCompletedToday: boolean;
+  isOnline: boolean;
+  pwaInstall: PwaInstallState;
   inputUrl: string;
   isRegistering: boolean;
   errorMsg: string | null;
@@ -32,6 +36,8 @@ export const HomeView: React.FC<Props> = ({
   trainingData,
   currentVideo,
   isCompletedToday,
+  isOnline,
+  pwaInstall,
   inputUrl,
   isRegistering,
   errorMsg,
@@ -192,7 +198,11 @@ export const HomeView: React.FC<Props> = ({
               </div>
             </div>
             <div className="text-center mt-4">
-              {isCompletedToday ? (
+              {!isOnline ? (
+                <p className="text-orange-600 font-bold text-sm">
+                  オフライン中（再生はオンライン時に可能です）
+                </p>
+              ) : isCompletedToday ? (
                 <p className="text-choco-400 font-bold text-sm">
                   明日も頑張りましょう！
                 </p>
@@ -248,6 +258,8 @@ export const HomeView: React.FC<Props> = ({
           <span>{importStatus.text}</span>
         </div>
       )}
+
+      <PwaInstallGuide pwaInstall={pwaInstall} variant="banner" />
     </div>
   );
 };
