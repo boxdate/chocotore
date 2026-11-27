@@ -1,51 +1,28 @@
 # ChocoTore（ちょこトレ）
 
-毎日の「ちょこっと」した運動を楽しく続けるための、**ログイン不要・完全ローカル動作・ホスティング無料**のWebアプリです。
+毎日の「ちょこっと」した運動を楽しく続けるための、**ログイン不要・完全ローカル動作**のトレーニング習慣化アプリです。
+
+👉 **[今すぐちょこトレを使う（https://boxdate.github.io/chocotore/）](https://boxdate.github.io/chocotore/)**
+
+アカウント登録やパスワード設定は一切不要。ブラウザを開いて YouTube 動画を 1 つ登録するだけで、すぐに毎日のトレーニングを始められます。
+
+---
+
+## 使い方
+
+1. 上のリンクからアプリを開く（スマホ・PC どちらでも利用できます）
+2. 毎日続けたい YouTube 動画の URL を登録する
+3. 動画を見ながら運動し、終わったら「完了！」を押してストリーク（連続日数）を記録する
+4. 必要に応じて「JSONファイルに保存」から記録ファイルをダウンロードし、端末の移行やバックアップに使う
 
 ## 特徴
 
-- **ログイン・ユーザー情報不要**：アカウント登録や認証は一切不要。個人情報もサーバーへ送信しません。
-- **JSONファイルで記録管理**：普段の記録はブラウザ（`localStorage`）に自動保存しつつ、スマホやPCに `.json` ファイルとして保存（エクスポート）・読み込み（インポート）できます。端末移行やバックアップも簡単です。
-- **維持費ゼロ（静的サイト）**：GitHub Pages + GitHub Actions だけでビルドからデプロイまで無料で運用できます。
+- **ログイン・ユーザー情報不要**：氏名やメールアドレスなどの個人情報は一切取得・送信しません。
+- **JSONファイルで記録管理**：普段の記録はブラウザ（`localStorage`）に自動保存しつつ、いつでも `.json` ファイルとして保存（エクスポート）・読み込み（インポート）ができます。スマホと PC 間のデータ移行も簡単です。
+- **維持費ゼロの静的サイト構成**：フロントエンドのみで完結しており、GitHub Pages 上で無料公開されています。
 
-## ローカル開発
-
-**必要なもの:** Node.js 20 以上
-
-```bash
-# 依存パッケージのインストール
-npm install
-
-# 開発サーバーの起動 (http://localhost:3000)
-npm run dev
-
-# リント・テスト・本番ビルドの確認
-npm run lint
-npm test
-npm run build
-```
-
-## GitHub Pages へのデプロイ手順
-
-このリポジトリには [.github/workflows/deploy.yml](.github/workflows/deploy.yml) が含まれており、`main` ブランチへのプッシュ時に自動でテスト・ビルド・デプロイが実行されます。
-
-### 初回のみ必要なGitHub側の設定
-
-1. GitHub でこのリポジトリの **Settings** → **Pages** を開く
-2. **Build and deployment** の **Source** を **GitHub Actions** に変更する
-3. `main` ブランチへ `git push` する（または **Actions** タブから手動実行する）
-
-デプロイが完了すると `https://boxdate.github.io/chocotore/` で公開されます。
-
-### デプロイ運用の練習フロー（おすすめ）
-
-1. 作業用ブランチを作成（例: `git checkout -b feature/my-change`）
-2. 変更して Pull Request を作成 → GitHub Actions が自動で `lint` / `test` / `build` を検証
-3. PR を `main` にマージ → GitHub Pages へ自動デプロイ！
-
-## 記録JSONファイルの形式
-
-エクスポートされる `.json` ファイルの形式例です。
+<details>
+<summary>保存される JSON ファイルの形式例</summary>
 
 ```json
 {
@@ -72,3 +49,28 @@ npm run build
   ]
 }
 ```
+
+</details>
+
+---
+
+## 開発者向け情報
+
+**必要なもの:** Node.js 20 以上
+
+```bash
+# 依存パッケージのインストール
+npm install
+
+# 開発サーバーの起動 (http://localhost:3000)
+npm run dev
+
+# リント・テスト・本番ビルドの確認
+npm run lint
+npm test
+npm run build
+```
+
+### 自動テスト・デプロイ（GitHub Actions）
+
+[.github/workflows/deploy.yml](.github/workflows/deploy.yml) により、`main` ブランチへのプッシュや Pull Request 時に自動で `lint` / `test` / `build` が実行され、`main` 更新時に GitHub Pages へ自動デプロイされます。
